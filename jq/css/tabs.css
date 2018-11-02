@@ -45,6 +45,6 @@
 .impowerBox .qrcode {width: 130px;height:130px;}
 .impowerBox .title {display: none;}
 .impowerBox .info {width: 200px;}
-.status_icon {display: none}
+.status_icon, .status_succ {display: none;}
 .impowerBox .status {text-align: center;}
 #wx_default_tip { display:none;}
