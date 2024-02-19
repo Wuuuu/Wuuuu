@@ -20,6 +20,10 @@ Hello, 欢迎来到我的 GitHub 简介，我是一位有 5 年经验的前端�
 - 有丰富的中后台和移动端开发经验
 
 - 熟悉敏捷开发
+  
+- 熟悉谷歌插件开发，有个AI插件开发相关经验
+  
+- 能够使用nestjs开发接口
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br><br>
 
