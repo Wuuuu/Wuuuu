@@ -15,16 +15,15 @@
 
 <br>
 
-Hello, 欢迎来到我的 GitHub 简介，我是一位有 5 年经验的前端开发工程师，最近正在学习 Nest.js，并计划使用它来构建更强大的 Web 应用程序，致力于成为一个全栈开发～
+Hello, 欢迎来到我的 GitHub 简介，我是一位有 6 年经验的前端开发工程师，最近正在学习 Nest.js，并计划使用它来构建更强大的 Web 应用程序，致力于成为一个全栈开发～
 
-- 有丰富的中后台和移动端开发经验
-
+- 有丰富的中后台和移动端H5开发经验，有开发组件库经验
+  
+- 熟悉浏览器插件开发，有AI相关经验
+  
+- 能够使用node,nestjs开发提效工具，完成接口开发
+  
 - 熟悉敏捷开发
-  
-- 熟悉谷歌插件开发，有个AI插件开发相关经验
-  
-- 能够使用nestjs开发接口
-
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br><br>
 
 ## <img src="https://media2.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif?cid=ecf05e47a0n3gi1bfqntqmob8g9aid1oyj2wr3ds3mg700bl&rid=giphy.gif" width ="25"><b> Skills</b>
