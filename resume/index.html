@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>吴垚科 — 资深前端开发工程师</title>
+  <style>
+    /* ═══════════════════════════════════════════════════
+   Design Tokens — 浅色专业简历 + 青蓝强调
+   ═══════════════════════════════════════════════════ */
+    :root {
+      /* 底色体系 */
+      --bg-deep: #eef3f6;
+      --bg-sidebar: #f6fafb;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f8fbfc;
+      --bg-main: #fbfdfe;
+      /* 青蓝主调（默认） */
+      --cyan: #1584D6;
+      --cyan-dim: #0f5f9d;
+      --cyan-soft: #eaf5ff;
+      --cyan-glow: rgba(21, 132, 214, .12);
+      --cyan-line: rgba(21, 132, 214, .28);
+      /* 文本层次 */
+      --text-primary: #172033;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --copy-color: var(--text-secondary);
+      --strong-color: var(--cyan);
+      /* 功能色 */
+      --amber: #1584D6;
+      --emerald: #047857;
+      /* 分割线 */
+      --line: #dfe8ee;
+      --line-cyan: rgba(21, 132, 214, .30);
+      --shadow: 0 8px 26px rgba(21, 61, 94, .09);
+      --shadow-sm: 0 2px 8px rgba(21, 61, 94, .06);
+      --shadow-card: 0 1px 3px rgba(21, 61, 94, .05), 0 4px 14px rgba(21, 61, 94, .07);
+      /* 尺寸 */
+      --sidebar-w: 306px;
+      --radius: 6px;
+      --radius-lg: 8px;
+      /* 动效 */
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      --duration: .35s;
+    }
+
+    /* ═══ 主题色板 ═══ */
+    [data-theme="navy"] {
+      --cyan: #1e40af;
+      --cyan-dim: #1e3a8a;
+      --cyan-soft: #eff6ff;
+      --cyan-glow: rgba(30, 64, 175, .12);
+      --cyan-line: rgba(30, 64, 175, .28);
+      --amber: #1e40af;
+      --line-cyan: rgba(30, 64, 175, .30);
+      --shadow: 0 8px 26px rgba(30, 58, 138, .09);
+      --shadow-sm: 0 2px 8px rgba(30, 58, 138, .06);
+      --shadow-card: 0 1px 3px rgba(30, 58, 138, .05), 0 4px 14px rgba(30, 58, 138, .07);
+    }
+
+    [data-theme="emerald"] {
+      --cyan: #059669;
+      --cyan-dim: #047857;
+      --cyan-soft: #ecfdf5;
+      --cyan-glow: rgba(5, 150, 105, .12);
+      --cyan-line: rgba(5, 150, 105, .28);
+      --amber: #059669;
+      --line-cyan: rgba(5, 150, 105, .30);
+      --shadow: 0 8px 26px rgba(4, 120, 87, .09);
+      --shadow-sm: 0 2px 8px rgba(4, 120, 87, .06);
+      --shadow-card: 0 1px 3px rgba(4, 120, 87, .05), 0 4px 14px rgba(4, 120, 87, .07);
+    }
+
+    [data-theme="morandi"] {
+      --cyan: #6b7280;
+      --cyan-dim: #4b5563;
+      --cyan-soft: #f3f4f6;
+      --cyan-glow: rgba(107, 114, 128, .12);
+      --cyan-line: rgba(107, 114, 128, .28);
+      --amber: #6b7280;
+      --line-cyan: rgba(107, 114, 128, .30);
+      --bg-deep: #f0eeeb;
+      --bg-sidebar: #f8f7f5;
+      --bg-main: #fdfcfb;
+      --shadow: 0 8px 26px rgba(75, 85, 99, .09);
+      --shadow-sm: 0 2px 8px rgba(75, 85, 99, .06);
+      --shadow-card: 0 1px 3px rgba(75, 85, 99, .05), 0 4px 14px rgba(75, 85, 99, .07);
+    }
+
+    [data-theme="amber"] {
+      --cyan: #d97706;
+      --cyan-dim: #b45309;
+      --cyan-soft: #fffbeb;
+      --cyan-glow: rgba(217, 119, 6, .12);
+      --cyan-line: rgba(217, 119, 6, .28);
+      --amber: #d97706;
+      --line-cyan: rgba(217, 119, 6, .30);
+      --shadow: 0 8px 26px rgba(180, 83, 9, .09);
+      --shadow-sm: 0 2px 8px rgba(180, 83, 9, .06);
+      --shadow-card: 0 1px 3px rgba(180, 83, 9, .05), 0 4px 14px rgba(180, 83, 9, .07);
+    }
+
+    [data-theme="violet"] {
+      --cyan: #7c3aed;
+      --cyan-dim: #6d28d9;
+      --cyan-soft: #f5f3ff;
+      --cyan-glow: rgba(124, 58, 237, .12);
+      --cyan-line: rgba(124, 58, 237, .28);
+      --amber: #7c3aed;
+      --line-cyan: rgba(124, 58, 237, .30);
+      --shadow: 0 8px 26px rgba(109, 40, 217, .09);
+      --shadow-sm: 0 2px 8px rgba(109, 40, 217, .06);
+      --shadow-card: 0 1px 3px rgba(109, 40, 217, .05), 0 4px 14px rgba(109, 40, 217, .07);
+    }
+
+    /* ═══════════════════════════════════════════════════
+   Reset & Base
+   ═══════════════════════════════════════════════════ */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      font: 400 15px/1.6 -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+      transition: color var(--duration) var(--ease);
+    }
+
+    a:hover {
+      color: var(--cyan-dim);
+    }
+
+    strong {
+      color: var(--strong-color);
+      font-weight: 650;
+    }
+
+    /* ═══════════════════════════════════════════════════
+   Layout — 左右双栏
+   ═══════════════════════════════════════════════════ */
+    .page {
+      display: grid;
+      grid-template-columns: var(--sidebar-w) 1fr;
+      min-height: calc(100vh - 32px);
+      max-width: 1120px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      box-shadow: var(--shadow);
+    }
+
+    /* ═══════════════════════════════════════════════════
+   Sidebar — 固定侧边栏
+   ═══════════════════════════════════════════════════ */
+    .sidebar {
+      position: relative;
+      top: 0;
+      height: auto;
+      overflow: visible;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--line);
+      padding: 26px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      /* 自定义滚动条 */
+      scrollbar-width: thin;
+      scrollbar-color: rgba(21, 132, 214, .28) transparent;
+    }
+
+    .sidebar::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb {
+      background: rgba(21, 132, 214, .28);
+      border-radius: 2px;
+    }
+
+    /* 头像 */
+    .avatar-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .avatar {
+      width: 110px;
+      height: auto;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--line-cyan);
+      box-shadow: 0 8px 22px rgba(21, 132, 214, .16);
+    }
+
+    /* 姓名 + 头衔 */
+    .profile {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .name {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .title {
+      font-size: 18px;
+      color: var(--cyan);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* 分割线 */
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 0 0 16px;
+      flex-shrink: 0;
+    }
+
+    /* 侧边区块标题 */
+    .side-heading {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .side-heading::before {
+      content: "";
+      width: 3px;
+      height: 12px;
+      background: var(--cyan);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* 联系方式 */
+    .contacts {
+      list-style: none;
+    }
+
+    .contacts li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--line);
+      transition: color var(--duration) var(--ease);
+    }
+
+    .contacts li:last-child {
+      border-bottom: none;
+    }
+
+    .contacts li:hover {
+      color: var(--text-primary);
+    }
+
+    .contacts svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      color: var(--text-muted);
+    }
+
+    /* 核心指标 */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .metric-card {
+      position: relative;
+      min-height: 78px;
+      padding: 10px 12px 10px 14px;
+      background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%);
+      border: 1px solid var(--line-cyan);
+      border-radius: var(--radius);
+      box-shadow: 0 1px 4px rgba(21, 132, 214, .08), 0 2px 8px rgba(21, 61, 94, .04);
+    }
+
+    .metric-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      bottom: 10px;
+      width: 3px;
+      border-radius: 0 3px 3px 0;
+      background: var(--cyan);
+    }
+
+    .metric-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+
+    .metric-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .metric-value {
+      font-size: 16px;
+      line-height: 1;
+      font-weight: 800;
+      color: var(--cyan);
+      white-space: nowrap;
+    }
+
+    .metric-desc {
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--text-secondary);
+    }
+
+    /* 技能标签组 */
+    .skill-group {
+      margin-bottom: 13px;
+    }
+
+    .skill-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-group-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 6px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 7px;
+      font-size: 11px;
+      color: var(--text-secondary);
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      line-height: 1.4;
+      transition: all var(--duration) var(--ease);
+    }
+
+    .tag:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: var(--cyan-glow);
+    }
+
+    /* 教育 */
+    .edu-item {
+      margin-bottom: 8px;
+    }
+
+    .edu-school {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .edu-major {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .edu-time {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* ═══════════════════════════════════════════════════
+   Main Content — 可滚动主区域
+   ═══════════════════════════════════════════════════ */
+    .main {
+      padding: 28px 34px 36px;
+      background: var(--bg-main);
+    }
+
+    /* 主区块标题 */
+    .section-title {
+      margin-top: 24px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--line-cyan), transparent);
+    }
+
+    .section-title-first {
+      margin-top: 0;
+    }
+
+    .summary p {
+      margin-bottom: 6px;
+      line-height: 1.72;
+    }
+
+    .summary p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* 个人简介 */
+    .summary {
+      font-size: 14px;
+      line-height: 1.72;
+      color: var(--copy-color);
+      margin-bottom: 16px;
+      padding: 15px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--cyan);
+      border-radius: var(--radius);
+    }
+
+    .summary strong {
+      color: var(--strong-color);
+      font-weight: 650;
+    }
+
+    /* ═══ 工作经历卡片 ═══ */
+    .experience-list {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .job-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--cyan);
+      border-radius: var(--radius-lg);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 10px;
+      padding-bottom: 9px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .job-role {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .job-company {
+      color: var(--cyan);
+      font-weight: 600;
+      margin-left: 8px;
+    }
+
+    .job-period {
+      flex-shrink: 0;
+      font-size: 14px;
+      color: var(--text-primary);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* 子模块标题 */
+    .sub-title {
+      font-size: 13.5px;
+      font-weight: 650;
+      color: var(--text-primary);
+      margin: 10px 0 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sub-title::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      background: var(--cyan);
+      border-radius: 1px;
+      flex-shrink: 0;
+    }
+
+    /* 列表项 */
+    .job-card ul {
+      list-style: none;
+      display: grid;
+      gap: 3px;
+    }
+
+    .job-card li {
+      position: relative;
+      padding-left: 13px;
+      font-size: 13.5px;
+      line-height: 1.62;
+      color: var(--copy-color);
+    }
+
+    .job-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .68em;
+      width: 4px;
+      height: 4px;
+      border-radius: 1px;
+      background: var(--cyan-dim);
+      opacity: .7;
+    }
+
+    .job-card li strong {
+      color: var(--strong-color);
+      font-weight: 600;
+    }
+
+    .job-card .num {
+      color: var(--amber);
+      font-weight: 700;
+    }
+
+    /* ═══ 项目经历卡片 ═══ */
+    .project-list {
+      display: grid;
+      gap: 11px;
+      margin-bottom: 24px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--cyan);
+      border-radius: var(--radius-lg);
+      padding: 14px 17px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .project-name {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .project-period {
+      flex-shrink: 0;
+      font-size: 14px;
+      color: var(--text-primary);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* 高亮结果行 */
+    .highlight {
+      border-left: 3px solid var(--cyan);
+      padding-left: 9px;
+      margin-bottom: 7px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--copy-color);
+      line-height: 1.45;
+    }
+
+    .highlight strong {
+      color: var(--strong-color);
+    }
+
+    .highlight .num {
+      color: var(--amber);
+      font-weight: 700;
+    }
+
+    .project-desc {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--copy-color);
+      margin-bottom: 8px;
+    }
+
+    .project-desc p {
+      margin-bottom: 2px;
+    }
+
+    .project-desc strong {
+      color: var(--strong-color);
+      font-weight: 600;
+    }
+
+    /* 技术栈标签 */
+    .stack-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .stack-tags span {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      background: var(--cyan-soft);
+      border: 1px solid var(--line-cyan);
+      padding: 1px 7px;
+      border-radius: 3px;
+      line-height: 1.4;
+      transition: all var(--duration) var(--ease);
+    }
+
+    .stack-tags span:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+      background: var(--cyan-glow);
+    }
+
+    /* ═══════════════════════════════════════════════════
+   Print Styles
+   ═══════════════════════════════════════════════════ */
+    @media print {
+      @page {
+        size: A4;
+        margin: 6mm;
+      }
+
+      body {
+        background: #fff;
+        color: #111;
+      }
+
+      .page {
+        grid-template-columns: 280px 1fr;
+      }
+
+      .sidebar {
+        position: relative;
+        height: auto;
+        background: #f8f9fa;
+        border-right: 1px solid #ddd;
+        padding: 16px 14px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .main {
+        padding: 16px 18px;
+        background: #fff;
+      }
+
+      .name {
+        background: none;
+        -webkit-text-fill-color: #111;
+        color: #111;
+      }
+
+      .side-heading {
+        color: #1584D6;
+      }
+
+      .section-title {
+        color: #111;
+      }
+
+      .section-title::after {
+        background: #ddd;
+      }
+
+      .divider {
+        background: #ddd;
+      }
+
+      .summary {
+        background: #f8f9fa;
+        border-color: #ddd;
+        border-left-color: #1584D6;
+      }
+
+      .summary strong,
+      .job-card li strong,
+      .highlight strong,
+      .project-desc strong {
+        color: var(--strong-color);
+      }
+
+      .job-card,
+      .project-card {
+        background: #fff;
+        border: 1px solid #ddd;
+        box-shadow: none;
+        break-inside: avoid;
+        padding: 14px 16px;
+      }
+
+      .job-card:hover,
+      .project-card:hover,
+      .tag:hover,
+      .stack-tags span:hover,
+      .contacts li:hover {
+        transform: none;
+        box-shadow: none;
+        border-color: #ddd;
+        color: inherit;
+        background: inherit;
+      }
+
+      .job-role,
+      .project-name,
+      .sub-title,
+      .edu-school {
+        color: #111;
+      }
+
+      .job-card li,
+      .project-desc,
+      .contacts li {
+        color: #333;
+      }
+
+      .job-period,
+      .project-period {
+        color: #111;
+      }
+
+      .tag {
+        background: #f1f5f9;
+        border-color: #ddd;
+        color: #333;
+      }
+
+      .stack-tags span {
+        background: #f1f5f9;
+        border-color: #ddd;
+        color: #666;
+      }
+
+      .metrics-grid {
+        gap: 6px;
+      }
+
+      .metric-card {
+        background: #f8fbff;
+        border-color: #c8dff2;
+        box-shadow: none;
+        min-height: auto;
+        padding: 8px 10px 8px 12px;
+      }
+
+      .metric-card::before {
+        background: #1584D6;
+      }
+
+      .metric-value {
+        color: #1584D6;
+      }
+
+      .title {
+        color: #666;
+      }
+
+      .avatar {
+        border-color: #ddd;
+        box-shadow: none;
+      }
+
+      .num,
+      .highlight .num {
+        color: #1584D6;
+      }
+
+      .job-header {
+        border-bottom-color: #ddd;
+      }
+
+      .divider {
+        background: #ddd;
+      }
+
+      .contacts li {
+        color: #333;
+        border-bottom-color: #eee;
+      }
+
+      .contacts svg {
+        color: #666;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════
+   Responsive — 平板 & 手机
+   ═══════════════════════════════════════════════════ */
+    @media (max-width: 960px) {
+      .page {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding: 28px 24px;
+      }
+
+      .main {
+        padding: 28px 24px 40px;
+      }
+
+      .metrics-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sidebar {
+        padding: 20px 16px;
+      }
+
+      .main {
+        padding: 20px 16px 32px;
+      }
+
+      .name {
+        font-size: 22px;
+      }
+
+      .job-card,
+      .project-card {
+        padding: 16px 18px;
+      }
+
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .job-header,
+      .project-header {
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- ═══ 左侧固定侧边栏 ═══ -->
+    <aside class="sidebar">
+      <!-- 头像 -->
+      <div class="avatar-wrap">
+        <img class="avatar" src="avatar.jpg" alt="吴垚科" width="110" height="136">
+      </div>
+
+      <!-- 姓名 & 头衔 -->
+      <div class="profile">
+        <div class="name">吴垚科</div>
+        <div class="title">高级前端开发</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- 联系方式 -->
+      <div class="side-heading">联系方式</div>
+      <ul class="contacts">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          四川 · 成都
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          177-2647-3958
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          wuykjiu@163.com
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+          <a href="https://github.com/Wuuuu" target="_blank" rel="noreferrer">github.com/Wuuuu</a>
+        </li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <!-- 专业技能 -->
+      <div class="side-heading">专业技能</div>
+      <div class="skill-group">
+        <div class="skill-group-label">核心框架</div>
+        <div class="tags">
+          <span class="tag">React 16-18</span><span class="tag">TypeScript</span><span class="tag">Next.js</span><span
+            class="tag">Umi</span><span class="tag">Zustand</span><span class="tag">Redux</span><span
+            class="tag">Node.js</span><span class="tag">NestJS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">工程架构</div>
+        <div class="tags">
+          <span class="tag">pnpm Monorepo</span><span class="tag">Webpack5</span><span class="tag">Vite</span><span
+            class="tag">Rollup</span><span class="tag">CI/CD</span><span class="tag">微前端</span><span
+            class="tag">性能优化</span><span class="tag">前端架构</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">业务组件</div>
+        <div class="tags">
+          <span class="tag">Ant Design</span><span class="tag">Formily</span><span class="tag">TailwindCSS</span><span
+            class="tag">RBAC 权限</span><span class="tag">动态表单</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">多端开发</div>
+        <div class="tags">
+          <span class="tag">WebView</span><span class="tag">JSBridge</span><span class="tag">Flutter</span><span
+            class="tag">微信小程序</span><span class="tag">Taro</span><span class="tag">移动端适配</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">AI & 测试</div>
+        <div class="tags">
+          <span class="tag">Playwright</span><span class="tag">Midscene.js</span><span class="tag">Prompt 工程</span><span
+            class="tag">Sentry</span><span class="tag">Sonar</span><span class="tag">代码评审</span>
+        </div>
+      </div>
+
+      <div class="divider" style="margin-top:24px"></div>
+
+      <!-- 教育背景 -->
+      <div class="side-heading">教育背景</div>
+      <div class="edu-item">
+        <div class="edu-school">哈尔滨远东理工学院</div>
+        <div class="edu-major">软件工程 · 本科</div>
+        <div class="edu-time">2013.09 — 2017.07</div>
+      </div>
+    </aside>
+
+    <!-- ═══ 右侧主内容区 ═══ -->
+    <main class="main">
+
+      <!-- 个人简介 -->
+      <section>
+        <h2 class="section-title section-title-first">个人简介</h2>
+        <div class="summary">
+          <p>高级前端开发 / 前端组长，<strong>9 年</strong> Web 前端研发经验与 <strong>4
+              年</strong>团队管理、<strong>前端架构</strong>和<strong>工程化建设</strong>经验，负责<strong>金融业务 H5</strong>、<strong>WebView
+              跨端应用</strong>、<strong>中后台系统</strong>、<strong>组件库</strong>和 <strong>AI 研发效能平台</strong>建设。</p>
+          <p>擅长 <strong>React 技术栈</strong>、<strong>H5 及混合应用开发</strong>，使用 <strong>AI Agent</strong>
+            对业务开发提效，<strong>Monorepo 多项目管理</strong>、<strong>Webpack /
+              Vite</strong>、<strong>CI/CD</strong>、<strong>性能优化</strong>、<strong>自动化测试</strong>、<strong>敏捷开发</strong>。能够从技术选型、架构升级、公共能力沉淀到团队规范落地完成端到端交付，带领团队完成复杂项目需求分析、技术方案设计、代码实现和测试优化，确保项目质量并提升团队效率。
+          </p>
+          <p>也能够结合 <strong>AI</strong>，使用 <strong>Node.js(NestJS)</strong> 进行后端开发，<strong>Flutter</strong> 开发移动端应用，使用
+            <strong>Docker</strong> 进行容器化部署，具备全栈协作与跨端交付能力。
+          </p>
+          <!-- <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-top"><span class="metric-label">性能优化</span><span class="metric-value">↑45%</span></div>
+              <div class="metric-desc">首屏加载提升，LCP 3.2s 降至 1.1s，跳出率下降 28%</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-top"><span class="metric-label">研发提效</span><span class="metric-value">↑60%</span></div>
+              <div class="metric-desc">搭建脚手架与组件库，新项目搭建效率提升 60%</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-top"><span class="metric-label">业务收益</span><span class="metric-value">+12%</span></div>
+              <div class="metric-desc">支撑日均百万级 PV，页面转化率提升 12%</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-top"><span class="metric-label">工程化</span><span class="metric-value">-40%</span></div>
+              <div class="metric-desc">落地规范与 CI/CD，重复代码减少，发布耗时缩短 85%</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-top"><span class="metric-label">稳定性</span><span class="metric-value">99.98%</span>
+              </div>
+              <div class="metric-desc">搭建监控与异常上报体系，全局报错率下降 70%</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-top"><span class="metric-label">团队赋能</span><span class="metric-value">10+场</span></div>
+              <div class="metric-desc">组织技术分享，指导工程师，统一团队技术方案</div>
+            </div>
+          </div> -->
+        </div>
+      </section>
+
+      <!-- 工作经历 -->
+      <section>
+        <h2 class="section-title">工作经历</h2>
+        <div class="experience-list">
+
+          <!-- 博问金服 -->
+          <article class="job-card">
+            <div class="job-header">
+              <div><span class="job-role">前端组长</span><span class="job-company">博问金服</span></div>
+              <span class="job-period">2023.06 — 至今</span>
+            </div>
+            <div class="sub-title">金融信贷业务 H5 技术重构与架构升级</div>
+            <ul>
+              <li>主导金融 H5 老项目全面重构，技术栈升级至 <strong>Umi4 + React18 + TypeScript + Zustand + React Query5 + Ant Design
+                  Mobile5</strong>，新包交付速度提升 <span class="num">100%</span>，维护成本下降 <span class="num">55%</span>，线上风险问题减少
+                <span class="num">60%</span>。
+              </li>
+              <li>设计并落地 <strong>pnpm Monorepo 多包架构</strong>，将请求层、状态管理、原生通信、数据埋点拆分为独立共享包，通过<strong>模板克隆 +
+                  配置差异化</strong>实现多品牌复用，快速产出同类金融包。</li>
+              <li>基于 <strong>React Query + Axios + RESTful API</strong>
+                封装统一请求层，覆盖<strong>超时控制、数据加解密、自动重试、重复拦截、鉴权与全局异常处理</strong>，接口稳定性与可维护性显著提升。</li>
+              <li>推进<strong>研发自动化</strong>体系建设，封装多国家金融项目模板，通过脚本实现<strong>项目脚手架生成、全局配置注入、Jenkins CI/CD
+                  自动部署</strong>，研发效率提升 <span class="num">100%</span>。</li>
+            </ul>
+            <div class="sub-title">公共基建、跨端能力与 AI 研发体系</div>
+            <ul>
+              <li>自研 <strong>JSBridge 跨端通信方案</strong>，兼容 <strong>Android / iOS / Flutter / WebView</strong> 多端容器，支撑<strong>设备信息、应用列表、定位、页面跳转、原生权限调用</strong>等核心业务链路。</li>
+              <li>建设 <strong>Git Flow + Commitlint + 代码规范 + 主题配置 + 环境配置 + 项目模板</strong>工程化工具链，配套 <strong>Skills 自动化辅助</strong>，统一团队开发流程、分支管理与发布规范。</li>
+              <li>结合 <strong>Pencil / Stitch / UI Skills / 大模型</strong>生成金融 H5 设计稿与运营插图，使前端具备<strong>产品需求启动与 UI 还原</strong>能力；使用 <strong>GPT / Opus</strong> 等模型交叉完成需求开发与<strong>代码审查</strong>。</li>
+              <li>落地 <strong>Playwright + Midscene.js</strong> 自动化测试与视觉回归方案，接入 <strong>Doubao-Seedream / Qwen / GLM</strong> 模型，建设 <strong>AI 驱动</strong>的 Web 端与 App 端<strong>自动化测试</strong>体系。</li>
+              <li>负责<strong>团队管理</strong>（需求排期、任务拆分、代码评审、技术培训），推动前端组 <strong>AI 编程规范</strong>落地，封装并共享 <strong>Skills 工具集</strong>，组织团队同步安装与最佳实践推广。</li>
+            </ul>
+          </article>
+
+          <!-- EPAM -->
+          <article class="job-card">
+            <div class="job-header">
+              <div><span class="job-role">前端开发</span><span class="job-company">EPAM（亿磐中国）</span></div>
+              <span class="job-period">2022.05 — 2023.03</span>
+            </div>
+            <ul>
+              <li>负责移动端国际记账项目用户模块开发，基于 <strong>React + JavaScript</strong> 完成核心页面、组件拆分、状态流转、表单校验和接口联调。</li>
+              <li>使用 <strong>Testing Library</strong> 编写单元测试，覆盖关键用户交互；使用 <strong>NestJS + JWT + RESTful API</strong> 开发登录注册、鉴权和 CRUD 接口。</li>
+              <li>参与项目 <strong>i18n 国际化</strong>方案落地，基于 <strong>react-i18next</strong> 实现多语言切换与资源懒加载，覆盖英语、日语、韩语等多语种，确保各语言环境下的日期、货币格式正确渲染。</li>
+              <li>在全英文 <strong>Agile Scrum</strong> 团队中协作，参与跨时区 Daily Standup、Sprint Review 与 <strong>Code Review</strong>，遵循 EPAM 工程规范，代码合并通过率 <span class="num">95%+</span>。</li>
+            </ul>
+          </article>
+
+          <!-- 书声科技 -->
+          <article class="job-card">
+            <div class="job-header">
+              <div><span class="job-role">前端开发 / 项目小组负责人</span><span class="job-company">成都书声科技</span></div>
+              <span class="job-period">2020.09 — 2022.05</span>
+            </div>
+            <ul>
+              <li>负责少儿阅读教育平台前端研发，主导运营管理后台、课程游戏配置中心、内容审核系统等 <strong>React 中后台</strong>建设，完成<strong>公共组件抽象</strong>与业务组件库沉淀，运用<strong>策略模式 / 观察者模式</strong>优化老代码结构，页面维护成本下降 <span class="num">40%</span>。</li>
+              <li>接入 <strong>Sentry</strong> 异常监控实现线上错误分钟级发现，落地 <strong>husky + lint-staged + commitlint</strong> 提交规范链路，前端低级 Bug 率下降 <span class="num">30%</span>，代码质量与协作效率显著提升。</li>
+              <li>负责 <strong>H5 学习页、App 内嵌 WebView、微信小程序</strong> 等多端开发，攻克 iOS / Android <strong>WebView 兼容</strong>、音频播放策略、手势交互差异等难题，保障少儿用户在多设备上的学习体验一致性。</li>
+              <li>基于 <strong>Ant Design Mobile</strong> 搭建移动端组件库 <strong>JoJoDesign</strong>，封装<strong>视频播放器 npm 包</strong>（支持倍速、章节、弹幕）与 <strong>Json2Canvas</strong> 学习报告图片生成工具，组件复用率达 <span class="num">70%</span>。</li>
+              <li>担任项目小组负责人，负责 <strong>3 人前端小组</strong>的需求拆解、排期与代码评审，推动<strong>敏捷迭代</strong>流程落地，双周交付准时率 <span class="num">90%+</span>。</li>
+            </ul>
+          </article>
+
+          <!-- 嗨学网 -->
+          <article class="job-card">
+            <div class="job-header">
+              <div><span class="job-role">前端开发</span><span class="job-company">嗨学网</span></div>
+              <span class="job-period">2017.09 — 2020.08</span>
+            </div>
+            <ul>
+              <li>负责成人职业教育平台中后台研发，基于 <strong>React + TypeScript + Dva + Ant Design</strong> 搭建 <strong>CRM 客户管理系统</strong>（学员线索、跟进、转化全链路）、<strong>商业财务系统</strong>（订单、退款、对账）与<strong>学术资料管理后台</strong>（课件、题库、师资），覆盖 <strong>RBAC 权限、动态表单、数据看板</strong>等核心场景。</li>
+              <li>主导老项目从 <strong>jQuery 向 React</strong> 技术栈迁移，封装 <strong>30+</strong> 通用组件与业务组件，建立页面模板体系，结合<strong>敏捷开发</strong>流程，多业务线需求交付效率提升 <span class="num">50%</span>。</li>
+              <li>接入 <strong>Sonar</strong> 代码质量管理，治理 <strong>500+</strong> 潜在 Bug 与代码异味，代码重复率从 <span class="num">18%</span> 降至 <span class="num">6%</span>；使用 <strong>Wepy</strong> 搭建<strong>商城小程序</strong>框架，支撑课程购买、会员充值等核心交易链路。</li>
+              <li>参与前端基础建设，落地 <strong>ESLint + Prettier</strong> 代码规范，封装<strong>请求层、权限组件、表格 / 表单高阶组件</strong>，统一多系统 UI 交互体验，新人上手周期缩短 <span class="num">40%</span>。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- 项目经验 -->
+      <section>
+        <h2 class="section-title">项目经验</h2>
+        <div class="project-list">
+
+          <!-- 金融信贷 -->
+          <article class="project-card">
+            <div class="project-header">
+              <h3 class="project-name">多国金融信贷 H5</h3>
+              <span class="project-period">2023.03 — 至今</span>
+            </div>
+            <div class="highlight">交付速度提升 <span class="num">100%</span>，项目启动与构建速度提升 <span class="num">2-3倍</span></div>
+            <div class="project-desc">
+              <p>担任前端负责人，主导金融信贷 H5 的<strong>架构升级与性能优化</strong>，覆盖香港、印尼、印度、越南等多国业务（金融包、贷超包、聚合包）。</p>
+              <p>技术栈升级至 <strong>React18 + TypeScript + Zustand + React Query + Umi4 + Antd Mobile5</strong>，将复杂交互逻辑封装为<strong>业务 Hooks</strong> 供外部快速调用；授信表单基于 <strong>Formily</strong> 实现<strong>字段配置化</strong>，提升可维护性与拓展性。</p>
+              <p>通过 <strong>Workflow Skill + 脚本</strong>实现基于后台数据<strong>自动创建金融包</strong>；结合 <strong>AI 生成 design.md</strong> 自动修改主题，使用<strong>视觉模型 + 预制提示词</strong>批量更新插图，脚本<strong>批量压缩图片</strong>，全流程自动化大幅缩短新包孵化周期。</p>
+            </div>
+            <div class="stack-tags">
+              <span>React 18</span><span>TypeScript</span><span>Zustand</span><span>React Query</span><span>Umi 4</span><span>Antd Mobile 5</span><span>Formily</span><span>JSBridge</span><span>Playwright</span><span>AI Workflow</span>
+            </div>
+          </article>
+
+          <!-- AskWay AI -->
+          <article class="project-card">
+            <div class="project-header">
+              <h3 class="project-name">AskWay AI 浏览器插件</h3>
+              <span class="project-period">2022.08 — 2023.03</span>
+            </div>
+            <div class="highlight">累计注册 <span class="num">6w+</span>，周活跃 <span class="num">5k+</span></div>
+            <div class="project-desc">
+              <p>独立负责 <strong>Chrome Extension</strong> 插件和官网前端开发，完成产品页面、浏览器插件交互、接口联调和发布迭代。</p>
+              <p>实现<strong>流式自然语言对话、Stream API、打字机效果、网页整页翻译、PDF 翻译、AI 写作、智能邮件回复、文生图、图生图</strong>等 AI 功能链路。</p>
+            </div>
+            <div class="stack-tags">
+              <span>Chrome Extension</span><span>JavaScript</span><span>Stream API</span><span>Google Translate
+                API</span><span>AI Generation</span>
+            </div>
+          </article>
+
+          <!-- 移动端多场景 -->
+          <article class="project-card">
+            <div class="project-header">
+              <h3 class="project-name">移动端多场景业务项目</h3>
+              <span class="project-period">2020.09 — 2022.05</span>
+            </div>
+            <div class="highlight"><strong>JSON 数据驱动</strong>通用页面，快速响应产品配置需求</div>
+            <div class="project-desc">
+              <p>独立负责用户作品、活动页和运营页面开发，覆盖 <strong>H5 / WebView / 微信生态 / 小程序</strong>等多端运行环境。</p>
+              <p>基于 <strong>JSON Schema</strong> 数据驱动页面渲染，对接 <strong>JSBridge</strong> 与 App 通信，支持
+                <strong>DeepLink</strong> 唤醒 App，提升配置化交付能力。
+              </p>
+            </div>
+            <div class="stack-tags">
+              <span>H5</span><span>WebView</span><span>微信小程序</span><span>JSON
+                Schema</span><span>JSBridge</span><span>DeepLink</span>
+            </div>
+          </article>
+
+          <!-- 中后台 -->
+          <article class="project-card">
+            <div class="project-header">
+              <h3 class="project-name">中后台系统矩阵</h3>
+              <span class="project-period">2017.08 — 2022.05</span>
+            </div>
+            <div class="highlight">代码量减少 <span class="num">15%-20%</span></div>
+            <div class="project-desc">
+              <p>覆盖 <strong>RBAC 权限管理、业务组件库、多主题方案、动态表单、动态表格、CDN 缓存、YApi Mock、Sonar</strong> 质量治理等中后台核心能力。</p>
+              <p>参与老项目重构、功能迁移和公共组件沉淀，使用 <strong>Next.js</strong> 开发 <strong>SEO</strong> 友好页面，提升系统可维护性和页面复用率。</p>
+            </div>
+            <div class="stack-tags">
+              <span>React</span><span>TypeScript</span><span>Ant Design</span><span>Dva /
+                Umi</span><span>Next.js</span><span>RBAC</span><span>Sonar</span><span>YApi</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ═══ 主题切换悬浮面板 ═══ -->
+  <div class="theme-switcher" id="themeSwitcher">
+    <button class="theme-toggle" id="themeToggle" title="切换主题色">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 2a7 7 0 0 0 0 14 7 7 0 0 0 0-14z" fill="currentColor" />
+      </svg>
+    </button>
+    <div class="theme-panel" id="themePanel">
+      <div class="theme-panel-title">预设主题</div>
+      <div class="theme-dots">
+        <button class="theme-dot active" data-theme="" style="background:#1584D6" title="青蓝"></button>
+        <button class="theme-dot" data-theme="navy" style="background:#1e40af" title="商务深蓝"></button>
+        <button class="theme-dot" data-theme="emerald" style="background:#059669" title="翠绿"></button>
+        <button class="theme-dot" data-theme="morandi" style="background:#6b7280" title="莫兰迪灰"></button>
+        <button class="theme-dot" data-theme="amber" style="background:#d97706" title="琥珀橙"></button>
+        <button class="theme-dot" data-theme="violet" style="background:#7c3aed" title="紫罗兰"></button>
+      </div>
+      <div class="theme-panel-title" style="margin-top:12px">自定义色值</div>
+      <div class="theme-custom">
+        <input type="color" id="colorPicker" value="#1584D6" class="theme-color-input">
+        <input type="text" id="colorHex" value="#1584D6" class="theme-hex-input" maxlength="7" placeholder="#1584D6">
+        <button class="theme-apply-btn" id="colorApply">应用</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .theme-switcher {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--cyan);
+      background: var(--bg-card);
+      color: var(--cyan);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform .2s;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.08);
+    }
+
+    .theme-panel {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow);
+      min-width: 180px;
+    }
+
+    .theme-panel.open {
+      display: block;
+    }
+
+    .theme-panel-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .theme-dots {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .theme-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform .15s, border-color .15s;
+    }
+
+    .theme-dot:hover {
+      transform: scale(1.2);
+    }
+
+    .theme-dot.active {
+      border-color: var(--text-primary);
+      transform: scale(1.15);
+    }
+
+    .theme-custom {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .theme-color-input {
+      width: 28px;
+      height: 28px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 0;
+      background: none;
+    }
+
+    .theme-color-input::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+
+    .theme-color-input::-webkit-color-swatch {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .theme-hex-input {
+      flex: 1;
+      min-width: 0;
+      height: 28px;
+      padding: 0 6px;
+      font-size: 12px;
+      font-family: monospace;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--bg-main);
+      color: var(--text-primary);
+      outline: none;
+    }
+
+    .theme-hex-input:focus {
+      border-color: var(--cyan);
+    }
+
+    .theme-apply-btn {
+      height: 28px;
+      padding: 0 10px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #fff;
+      background: var(--cyan);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity .15s;
+    }
+
+    .theme-apply-btn:hover {
+      opacity: .85;
+    }
+
+    @media print {
+      .theme-switcher {
+        display: none !important;
+      }
+    }
+  </style>
+
+  <script>
+    (function () {
+      const KEY = 'resume-theme';
+      const CUSTOM_KEY = 'resume-custom-color';
+      const toggle = document.getElementById('themeToggle');
+      const panel = document.getElementById('themePanel');
+      const dots = document.querySelectorAll('.theme-dot');
+      const picker = document.getElementById('colorPicker');
+      const hexInput = document.getElementById('colorHex');
+      const applyBtn = document.getElementById('colorApply');
+
+      // 辅助：从 hex 生成 dim/soft/glow/line 等派生色
+      function hexToRgb(hex) {
+        var r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
+        return { r: r, g: g, b: b };
+      }
+      function darken(hex, amt) {
+        var c = hexToRgb(hex);
+        var r = Math.max(0, c.r - amt), g = Math.max(0, c.g - amt), b = Math.max(0, c.b - amt);
+        return '#' + [r, g, b].map(function (v) { return v.toString(16).padStart(2, '0') }).join('');
+      }
+      function lighten(hex, amt) {
+        var c = hexToRgb(hex);
+        var r = Math.min(255, c.r + amt), g = Math.min(255, c.g + amt), b = Math.min(255, c.b + amt);
+        return '#' + [r, g, b].map(function (v) { return v.toString(16).padStart(2, '0') }).join('');
+      }
+
+      function applyCustomColor(hex) {
+        if (!/^#[0-9a-fA-F]{6}$/.test(hex)) return;
+        var root = document.documentElement;
+        var c = hexToRgb(hex);
+        var dim = darken(hex, 30);
+        var soft = lighten(hex, 200);
+        root.removeAttribute('data-theme');
+        root.style.setProperty('--cyan', hex);
+        root.style.setProperty('--cyan-dim', dim);
+        root.style.setProperty('--cyan-soft', '#' + [Math.min(255, c.r + 200), Math.min(255, c.g + 200), Math.min(255, c.b + 200)].map(function (v) { return v.toString(16).padStart(2, '0') }).join(''));
+        root.style.setProperty('--cyan-glow', 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',.12)');
+        root.style.setProperty('--cyan-line', 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',.28)');
+        root.style.setProperty('--amber', hex);
+        root.style.setProperty('--line-cyan', 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',.30)');
+        root.style.setProperty('--shadow', '0 8px 26px rgba(' + c.r + ',' + c.g + ',' + c.b + ',.09)');
+        root.style.setProperty('--shadow-sm', '0 2px 8px rgba(' + c.r + ',' + c.g + ',' + c.b + ',.06)');
+        root.style.setProperty('--shadow-card', '0 1px 3px rgba(' + c.r + ',' + c.g + ',' + c.b + ',.05), 0 4px 14px rgba(' + c.r + ',' + c.g + ',' + c.b + ',.07)');
+        localStorage.setItem(KEY, 'custom');
+        localStorage.setItem(CUSTOM_KEY, hex);
+        picker.value = hex;
+        hexInput.value = hex.toUpperCase();
+        updateActive('__custom__');
+      }
+
+      function clearCustom() {
+        var root = document.documentElement;
+        ['--cyan', '--cyan-dim', '--cyan-soft', '--cyan-glow', '--cyan-line', '--amber', '--line-cyan', '--shadow', '--shadow-sm', '--shadow-card'].forEach(function (p) {
+          root.style.removeProperty(p);
+        });
+      }
+
+      // 初始化：读取缓存
+      var savedTheme = localStorage.getItem(KEY) || '';
+      var savedCustom = localStorage.getItem(CUSTOM_KEY) || '';
+      if (savedTheme === 'custom' && savedCustom) {
+        applyCustomColor(savedCustom);
+      } else if (savedTheme && savedTheme !== 'custom') {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateActive(savedTheme);
+      }
+      if (savedCustom) { picker.value = savedCustom; hexInput.value = savedCustom.toUpperCase(); }
+
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        panel.classList.toggle('open');
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!document.getElementById('themeSwitcher').contains(e.target)) {
+          panel.classList.remove('open');
+        }
+      });
+
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          clearCustom();
+          var theme = this.getAttribute('data-theme');
+          if (theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+          localStorage.setItem(KEY, theme);
+          localStorage.removeItem(CUSTOM_KEY);
+          updateActive(theme);
+        });
+      });
+
+      // 色板选择器联动
+      picker.addEventListener('input', function () {
+        hexInput.value = this.value.toUpperCase();
+      });
+
+      hexInput.addEventListener('input', function () {
+        var v = this.value;
+        if (!v.startsWith('#')) v = '#' + v;
+        if (/^#[0-9a-fA-F]{6}$/.test(v)) picker.value = v;
+      });
+
+      hexInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') applyBtn.click();
+      });
+
+      applyBtn.addEventListener('click', function () {
+        var v = hexInput.value;
+        if (!v.startsWith('#')) v = '#' + v;
+        applyCustomColor(v);
+      });
+
+      function updateActive(theme) {
+        dots.forEach(function (d) {
+          d.classList.toggle('active', d.getAttribute('data-theme') === theme);
+        });
+      }
+    })();
+  </script>
+
+</body>
+
+</html>
